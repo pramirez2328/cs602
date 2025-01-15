@@ -14,16 +14,14 @@ export const lookupByCourseId = (id) => {
 
 export const lookupByCourseName = (name) => {
   console.log('\nLookup by CourseName', name);
-  let result;
-  // fill the code
+  let result = courseData.courses.filter((course) => course.course_name.includes(name));
 
   return result;
 };
 
 export const getRandomCourse = () => {
   console.log('\nA Random Course');
-  let result;
-  // fill the code
+  let result = courseData.courses[Math.floor(Math.random() * courseData.courses.length)];
 
   return result;
 };
