@@ -1,0 +1,312 @@
+{
+  "courses": [
+    {
+      "course_id": "CS 101",
+      "course_name": "Computers and Their Applications"
+    },
+    {
+      "course_id": "CS 200",
+      "course_name": "Introduction to Computer Information Systems"
+    },
+    {
+      "course_id": "CS 201",
+      "course_name": "Introduction to Programming"
+    },
+    {
+      "course_id": "CS 231",
+      "course_name": "Programming with C++"
+    },
+    {
+      "course_id": "CS 232",
+      "course_name": "Programming with Java"
+    },
+    {
+      "course_id": "CS 248",
+      "course_name": "Discrete Mathematics"
+    },
+    {
+      "course_id": "CS 300",
+      "course_name": "Introduction to Software Development"
+    },
+    {
+      "course_id": "CS 341",
+      "course_name": "Data Structures with C++"
+    },
+    {
+      "course_id": "CS 342",
+      "course_name": "Data Structures with Java"
+    },
+    {
+      "course_id": "CS 382",
+      "course_name": "Information Systems for Management"
+    },
+    {
+      "course_id": "CS 401",
+      "course_name": "Introduction to Web Application Development"
+    },
+    {
+      "course_id": "CS 422",
+      "course_name": "Advanced Programming Concepts"
+    },
+    {
+      "course_id": "CS 425",
+      "course_name": "Introduction to Business Data Communications and Networks"
+    },
+    {
+      "course_id": "CS 432",
+      "course_name": "Introduction to IT Project Management"
+    },
+    {
+      "course_id": "CS 469",
+      "course_name": "Introduction to Database Design and Implementation for Business"
+    },
+    {
+      "course_id": "CS 472",
+      "course_name": "Computer Architecture"
+    },
+    {
+      "course_id": "CS 473",
+      "course_name": "Introduction to Software Engineering"
+    },
+    {
+      "course_id": "CS 506",
+      "course_name": "Internship in Computer Science"
+    },
+    {
+      "course_id": "CS 520",
+      "course_name": "Information Structures with Java"
+    },
+    {
+      "course_id": "CS 521",
+      "course_name": "Information Structures with Python"
+    },
+    {
+      "course_id": "CS 526",
+      "course_name": "Data Structures and Algorithms"
+    },
+    {
+      "course_id": "CS 532",
+      "course_name": "Computer Graphics"
+    },
+    {
+      "course_id": "CS 535",
+      "course_name": "Computer Networks"
+    },
+    {
+      "course_id": "CS 544",
+      "course_name": "Foundations of Analytics and Data Visualization"
+    },
+    {
+      "course_id": "CS 546",
+      "course_name": "Introduction to Probability and Statistics"
+    },
+    {
+      "course_id": "CS 550",
+      "course_name": "Computational Mathematics for Machine Learning"
+    },
+    {
+      "course_id": "CS 555",
+      "course_name": "Foundations of Machine Learning"
+    },
+    {
+      "course_id": "CS 561",
+      "course_name": "Financial Analytics"
+    },
+    {
+      "course_id": "CS 566",
+      "course_name": "Analysis of Algorithms"
+    },
+    {
+      "course_id": "CS 570",
+      "course_name": "Biomedical Sciences and Health IT"
+    },
+    {
+      "course_id": "CS 575",
+      "course_name": "Operating Systems"
+    },
+    {
+      "course_id": "CS 579",
+      "course_name": "Database Management"
+    },
+    {
+      "course_id": "CS 580",
+      "course_name": "Health Informatics"
+    },
+    {
+      "course_id": "CS 581",
+      "course_name": "Health Information Systems"
+    },
+    {
+      "course_id": "CS 584",
+      "course_name": "Ethical and Legal Issues in Healthcare Informatics"
+    },
+    {
+      "course_id": "CS 599",
+      "course_name": "Biometrics"
+    },
+    {
+      "course_id": "CS 601",
+      "course_name": "Web Application Development"
+    },
+    {
+      "course_id": "CS 602",
+      "course_name": "Server-Side Web Development"
+    },
+    {
+      "course_id": "CS 621",
+      "course_name": "Data Structures and Algorithms"
+    },
+    {
+      "course_id": "CS 622",
+      "course_name": "Advanced Programming Techniques"
+    },
+    {
+      "course_id": "CS 625",
+      "course_name": "Business Data Communication and Networks"
+    },
+    {
+      "course_id": "CS 632",
+      "course_name": "Information Technology Project Management"
+    },
+    {
+      "course_id": "CS 633",
+      "course_name": "Software Quality, Testing, and Security Management"
+    },
+    {
+      "course_id": "CS 634",
+      "course_name": "Agile Software Development"
+    },
+    {
+      "course_id": "CS 662",
+      "course_name": "Computer Language Theory"
+    },
+    {
+      "course_id": "CS 664",
+      "course_name": "Artificial Intelligence"
+    },
+    {
+      "course_id": "CS 665",
+      "course_name": "Software Design and Patterns"
+    },
+    {
+      "course_id": "CS 669",
+      "course_name": "Database Design and Implementation for Business"
+    },
+    {
+      "course_id": "CS 673",
+      "course_name": "Software Engineering"
+    },
+    {
+      "course_id": "CS 674",
+      "course_name": "Database Security"
+    },
+    {
+      "course_id": "CS 677",
+      "course_name": "Data Science with Python"
+    },
+    {
+      "course_id": "CS 682",
+      "course_name": "Information Systems Analysis and Design"
+    },
+    {
+      "course_id": "CS 683",
+      "course_name": "Mobile Application Development with Android"
+    },
+    {
+      "course_id": "CS 684",
+      "course_name": "Enterprise Cybersecurity Management"
+    },
+    {
+      "course_id": "CS 685",
+      "course_name": "Network Design and Management"
+    },
+    {
+      "course_id": "CS 688",
+      "course_name": "Web Mining and Graph Analytics"
+    },
+    {
+      "course_id": "CS 689",
+      "course_name": "Designing and Implementing a Data Warehouse"
+    },
+    {
+      "course_id": "CS 690",
+      "course_name": "Network Security"
+    },
+    {
+      "course_id": "CS 693",
+      "course_name": "Digital Forensics and Investigations"
+    },
+    {
+      "course_id": "CS 694",
+      "course_name": "Mobile Forensics and Security"
+    },
+    {
+      "course_id": "CS 695",
+      "course_name": "Cybersecurity"
+    },
+    {
+      "course_id": "CS 699",
+      "course_name": "Data Mining"
+    },
+    {
+      "course_id": "CS 701",
+      "course_name": "Rich Internet Application Development"
+    },
+    {
+      "course_id": "CS 763",
+      "course_name": "Secure Software Development"
+    },
+    {
+      "course_id": "CS 766",
+      "course_name": "Deep Reinforcement Learning"
+    },
+    {
+      "course_id": "CS 767",
+      "course_name": "Advanced Machine Learning and Neural Networks"
+    },
+    {
+      "course_id": "CS 775",
+      "course_name": "Advanced Networking"
+    },
+    {
+      "course_id": "CS 777",
+      "course_name": "Big Data Analytics"
+    },
+    {
+      "course_id": "CS 779",
+      "course_name": "Advanced Database Management"
+    },
+    {
+      "course_id": "CS 781",
+      "course_name": "Advanced Health Informatics"
+    },
+    {
+      "course_id": "CS 782",
+      "course_name": "IT Strategy and Management"
+    },
+    {
+      "course_id": "CS 783",
+      "course_name": "Enterprise Architecture"
+    },
+    {
+      "course_id": "CS 787",
+      "course_name": "Adversarial Machine Learning"
+    },
+    {
+      "course_id": "CS 788",
+      "course_name": "Generative AI"
+    },
+    {
+      "course_id": "CS 789",
+      "course_name": "Cryptography"
+    },
+    {
+      "course_id": "CS 790",
+      "course_name": "Computer Vision in AI"
+    },
+    {
+      "course_id": "CS 799",
+      "course_name": "Advanced Cryptography"
+    }
+  ]
+}
