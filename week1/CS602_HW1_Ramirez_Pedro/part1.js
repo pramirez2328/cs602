@@ -10,5 +10,5 @@ console.log(courseDB.lookupByCourseName('Web'));
 console.log(courseDB.getRandomCourse());
 console.log(courseDB.getRandomCourse());
 
-// include two additional test cases for each lookup
-// fill the code
+console.log(courseDB.getCryptographyCourses('Cryptography'));
+console.log(courseDB.getDatabaseCourses('Database'));
