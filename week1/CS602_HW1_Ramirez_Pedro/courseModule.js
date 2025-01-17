@@ -16,7 +16,7 @@ export const lookupByCourseId = (id) => {
 export const lookupByCourseName = (name) => {
   console.log('\n------------------------------------------------');
   console.log('* Lookup by CourseName', name);
-  const result = courseData.courses.filter((course) => course.course_name.includes(name));
+  const result = courseData.courses.filter((course) => course.course_name?.toUpperCase().includes(name?.toUpperCase()));
 
   return result;
 };
