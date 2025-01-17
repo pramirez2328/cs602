@@ -28,19 +28,3 @@ export const getRandomCourse = () => {
 
   return result;
 };
-
-export const getCryptographyCourses = (name) => {
-  console.log('\n-------------------------------------------------');
-  console.log('* Lookup Cryptography Courses');
-  const result = courseData.courses.filter((course) => course.course_name.includes(name));
-
-  return result;
-};
-
-export const getDatabaseCourses = (name) => {
-  console.log('\n------------------------------------------------');
-  console.log('* Lookup Database Courses');
-  const result = courseData.courses.filter((course) => course.course_name.includes(name));
-
-  return result;
-};
