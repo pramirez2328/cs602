@@ -2,33 +2,29 @@ import fs from 'node:fs';
 
 const jsonData = fs.readFileSync('cs_courses.json');
 const courseData = JSON.parse(jsonData);
-console.log("Read", courseData.courses.length, "courses");
+console.log('Read', courseData.courses.length, 'courses');
 
-export const lookupByCourseId =  (id) => {
-	console.log("\nLookup by CourseId", id);
-	let result;
-	let re = new RegExp(id);
+export const lookupByCourseId = (id) => {
+  if (!id) return [];
+  console.log('\nLookup by CourseId', id);
+  const regex = new RegExp(id);
+  const result = courseData.courses.filter((course) => regex.test(course.course_id));
 
-	// Fill in the code
-
-	return result;
+  return result;
 };
 
-export const lookupByCourseName= (name) => {
-  console.log("\nLookup by CourseName", name);
+export const lookupByCourseName = (name) => {
+  console.log('\nLookup by CourseName', name);
   let result;
-	
-	// Fill in the code
-	
-	return result;
+
+  // Fill in the code
+
+  return result;
 };
 
 export const getRandomCourse = () => {
-	console.log("\nA Random Course");
-	let result;
-	
-	// Fill in the code
-	
-	return result;
-};
+  console.log('\nA Random Course:');
+  const result = courseData.courses[Math.floor(Math.random() * courseData.courses.length)];
 
+  return result;
+};
