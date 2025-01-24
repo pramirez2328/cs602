@@ -6,7 +6,8 @@ console.log('Read', courseData.courses.length, 'courses');
 
 export const lookupByCourseId = (id) => {
   if (!id) return [];
-  console.log('\nLookup by CourseId', id);
+  console.log('\n------------------------------------------------');
+  console.log('* Lookup by CourseId', id);
   const regex = new RegExp(id);
   const result = courseData.courses.filter((course) => regex.test(course.course_id));
 
@@ -14,16 +15,17 @@ export const lookupByCourseId = (id) => {
 };
 
 export const lookupByCourseName = (name) => {
-  console.log('\nLookup by CourseName', name);
-  let result;
-
-  // Fill in the code
+  if (!name) return [];
+  console.log('\n------------------------------------------------');
+  console.log('* Lookup by CourseName', name);
+  const result = courseData.courses.filter((course) => course.course_name?.toUpperCase().includes(name?.toUpperCase()));
 
   return result;
 };
 
 export const getRandomCourse = () => {
-  console.log('\nA Random Course:');
+  console.log('\n------------------------------------------------');
+  console.log('* A Random Course');
   const result = courseData.courses[Math.floor(Math.random() * courseData.courses.length)];
 
   return result;

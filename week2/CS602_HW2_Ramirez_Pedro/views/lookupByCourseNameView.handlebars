@@ -1,1 +1,10 @@
-<b>Course Name Query </b>
+<b>Course Name Query: {{query}}</b>
+<ul>
+  {{#if courses.length}}
+    {{#each courses}}
+      <li>{{this.course_id}} -{{this.course_name}}</li>
+    {{/each}}
+  {{else}}
+    <b>No results found!</b>
+  {{/if}}
+</ul>
