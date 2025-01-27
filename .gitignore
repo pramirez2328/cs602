@@ -1,2 +1,4 @@
 *_Samples
 node_modules
+*.docx
+*.pdf
