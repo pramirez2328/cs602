@@ -21,16 +21,16 @@ import * as courseDB from './courseModule.js';
 
 // GET request to the homepage
 
-app.get('/', function (req, res) {
+app.get('/', (req, res) => {
   res.render('homeView');
 });
 
-app.get('/random', function (req, res) {
+app.get('/random', (req, res) => {
   const result = courseDB.getRandomCourse();
   res.render('randomView', result);
 });
 
-app.get('/cid', function (req, res) {
+app.get('/cid', (req, res) => {
   if (req.query.id) {
     let id = req.query.id;
     let result = courseDB.lookupByCourseId(id);
@@ -40,19 +40,19 @@ app.get('/cid', function (req, res) {
   }
 });
 
-app.post('/cid', function (req, res) {
+app.post('/cid', (req, res) => {
   let id = req.body.id;
   let result = courseDB.lookupByCourseId(id);
   res.render('lookupByCourseIdView', { query: id, courses: result });
 });
 
-app.get('/cid/:id', function (req, res) {
+app.get('/cid/:id', (req, res) => {
   let id = req.params.id;
   let result = courseDB.lookupByCourseId(id);
 
   res.format({
     'application/json': () => {
-      res.json({ query: id, courses: result });
+      res.status(200).json({ query: id, courses: result });
     },
 
     'application/xml': () => {
@@ -64,41 +64,39 @@ app.get('/cid/:id', function (req, res) {
           })
           .join('\n') +
         `\n</courses>`;
-      res.type('application/xml').send(coursesXml);
+      res.status(200).type('application/xml').send(coursesXml);
     },
 
     'text/html': () => {
-      res.render('lookupByCourseIdView', { query: id, courses: result });
+      res.status(200).render('lookupByCourseIdView', { query: id, courses: result });
     },
 
     'text/plain': () => {
       let coursesText =
         `Query: ${id}\n` + result.map((course) => `${course.course_id}: ${course.course_name}`).join('\n');
-      res.type('text/plain').send(coursesText);
+      res.status(200).type('text/plain').send(coursesText);
     },
 
     default: () => {
-      res.status(404);
-      res.send('<b>404 - Not Found</b>');
+      res.status(404).send('404');
     }
   });
 });
 
-app.get('/cname', function (req, res) {
+app.get('/cname', (req, res) => {
   res.render('lookupByCourseNameForm');
 });
 
-app.post('/cname', function (req, res) {
+app.post('/cname', (req, res) => {
   let name = req.body.name;
   let result = courseDB.lookupByCourseName(name);
   res.render('lookupByCourseNameView', { query: name, courses: result });
 });
 
-app.get('/cname/:name', function (req, res) {
+app.get('/cname/:name', (req, res) => {
   let name = req.params.name;
   let result = courseDB.lookupByCourseName(name);
 
-  // Fill in the code for JSON, XML, and HTML formats
   res.format({
     'application/json': () => {
       res.json({ query: name, courses: result });
@@ -127,15 +125,13 @@ app.get('/cname/:name', function (req, res) {
     },
 
     default: () => {
-      res.status(404);
-      res.send('<b>404 - Not Found</b>');
+      res.status(404).send('404');
     }
   });
 });
 
 app.use(function (req, res) {
-  res.status(404);
-  res.render('404');
+  res.status(404).render('404');
 });
 
 app.listen(3000, function () {

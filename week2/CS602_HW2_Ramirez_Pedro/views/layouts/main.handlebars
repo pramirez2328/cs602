@@ -1,20 +1,25 @@
 <html>
   <head>
     <title>CS602 HW2</title>
+    <link rel='stylesheet' href='/css/style.css' />
   </head>
   <body>
     <header>
-      <img src='/images/bu-logo.gif' alt='logo' />
+      <a href='/'> <img src='/images/bu-logo.gif' alt='logo' /></a>
     </header>
-    <h3>CS602 HW2 - Pedro Ramirez</h3>
-    <a href='/cid'>Lookup By CourseId</a>
-    |
-    <a href='/cname'>Lookup By CourseName</a>
-    |
-    <a href='/random'>Get Random Course</a>
-    <hr />
 
-    {{{body}}}
+    <main class='container'>
+      <h3>CS602 HW2 - Pedro Ramirez</h3>
+      <div class='routes'>
+        <a href='/cid'>Lookup By CourseId</a>
+        |
+        <a href='/cname'>Lookup By CourseName</a>
+        |
+        <a href='/random'>Get Random Course</a>
+      </div>
+      <hr />
 
+      {{{body}}}
+    </main>
   </body>
 </html>

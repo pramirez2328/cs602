@@ -1,0 +1,95 @@
+:root {
+  --main-color: #bc0707;
+  --border-color: rgb(181, 180, 180);
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  background-color: #b30000;
+  padding: 1rem 0;
+  border-bottom: 5px solid var(--border-color);
+  text-align: center;
+}
+
+header img {
+  width: auto;
+}
+
+h3 {
+  text-align: center;
+  color: var(--main-color);
+  margin: 2rem;
+}
+
+h4 {
+  text-align: center;
+}
+
+.routes {
+  display: flex;
+  justify-content: center;
+}
+
+a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: var(--main-color);
+  font-weight: 700;
+}
+
+hr {
+  border: 0;
+  height: 3px;
+  background-color: var(--border-color);
+  margin: 20px auto;
+  width: 100%;
+}
+
+form {
+  border: var(--border-color) 2px solid;
+  padding: 2rem;
+  width: fit-content;
+  border-radius: 7px;
+}
+
+input[type='text'] {
+  border: var(--border-color) 1px solid;
+  border-radius: 3px;
+  padding: 2px;
+}
+
+input[type='submit'] {
+  background-color: var(--main-color);
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  width: 100%;
+}
+
+button {
+  background-color: var(--main-color);
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .routes a {
+    font-size: 0.8rem;
+  }
+}
