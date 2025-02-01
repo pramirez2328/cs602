@@ -7,13 +7,13 @@ import * as courseDB from '../courseModule.js';
 
 // router specs
 
-router.use(function (req, res, next){
+router.use(function (req, res, next) {
   if (req.session.sessionData === undefined) {
     req.session.sessionData = {
-      'lookupByCourseId': [],
-      'lookupByCourseName': [],
-      'lookupByCoordinator': [],
-      'courseDescrition': []
+      lookupByCourseId: [],
+      lookupByCourseName: [],
+      lookupByCoordinator: [],
+      courseDescrition: []
     };
   }
   next();
@@ -21,12 +21,11 @@ router.use(function (req, res, next){
 
 // GET request to the homepage
 
-router.get('/', function (req, res){
+router.get('/', function (req, res) {
   res.render('homeView');
 });
 
-
-router.get('/cid', async function(req, res) {
+router.get('/cid', async function (req, res) {
   if (req.query.id) {
     let id = req.query.id;
     let result = await courseDB.lookupByCourseId(id);
@@ -34,78 +33,57 @@ router.get('/cid', async function(req, res) {
     if (!req.session.sessionData['lookupByCourseId'].includes(encodeURIComponent(id)))
       req.session.sessionData['lookupByCourseId'].push(encodeURIComponent(id));
 
-    res.render('lookupByCourseIdView', 
-      {query: id, courses: result});
+    res.render('lookupByCourseIdView', { query: id, courses: result });
   } else {
     res.render('lookupByCourseIdForm');
   }
 });
 
-router.post('/cid', async function(req, res) {
+router.post('/cid', async function (req, res) {
   let id = req.body.id;
   let result = await courseDB.lookupByCourseId(id);
+  console.log('index.js: cid post', result);
 
   if (!req.session.sessionData['lookupByCourseId'].includes(encodeURIComponent(id)))
-      req.session.sessionData['lookupByCourseId'].push(encodeURIComponent(id));
+    req.session.sessionData['lookupByCourseId'].push(encodeURIComponent(id));
 
-    
-  res.render('lookupByCourseIdView', 
-    {query: id, courses: result});
+  res.render('lookupByCourseIdView', { query: id, courses: result });
 });
 
-
-router.get('/cid/:id', async function(req, res) {
+router.get('/cid/:id', async function (req, res) {
   let id = req.params.id;
-  
-  // Fill in the code
 
+  // Fill in the code
+  let result = await courseDB.lookupByCourseId(id);
+  res.render('lookupByCourseIdView', { query: id, courses: result });
 });
 
-
-router.get('/cname', async function(req, res) {
-  
+router.get('/cname', async function (req, res) {
   // Fill in the code
-
 });
 
-router.post('/cname', async function(req, res) {
-  
+router.post('/cname', async function (req, res) {
   // Fill in the code
-
 });
 
-router.get('/cname/:name', async function(req, res) {
-  
+router.get('/cname/:name', async function (req, res) {
   // Fill in the code
-
 });
 
 router.get('/random', async function (req, res) {
-  
   // Fill in the code
-  
 });
 
 router.get('/describe/:id', async function (req, res) {
-  
   // Fill in the code
-
 });
-
 
 router.get('/coordinator/:id', async function (req, res) {
-  
   // Fill in the code
-
 });
-  
+
 router.get('/history', function (req, res) {
-
   // Fill in the code
-  
 });
 
-
-
-
-export {router};
+export { router };

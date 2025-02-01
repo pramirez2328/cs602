@@ -22,7 +22,7 @@ result = await courseDB.getCourseDescription('632');
 console.log(result);
 console.log('\n-----------------------------------');
 
-// two extra tests for each function
+console.log('---- two extra tests for each function ----');
 
 result = await courseDB.lookupByCourseId('%01');
 console.log(result);
