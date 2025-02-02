@@ -9,7 +9,6 @@ import { Course, Coordinator } from './models/OneToManyModel.js';
 export const lookupByCourseId = async (id) => {
   console.log('\nLookup by CourseId:', id);
   const result = await Course.findAll({ where: { courseId: { [Op.like]: id } }, include: Coordinator });
-  console.log(result);
 
   return JSON.parse(JSON.stringify(result));
 };

@@ -1,3 +1,16 @@
-<b>Coordinator Query </b>
+<b>Coordinator Query: </b>
 {{this.query}}
 <p></p>
+<ul>
+  {{#if this.courses}}
+    {{#each this.courses}}
+      <li>
+        <a href=''>{{this.courseId}}</a>
+        -
+        {{this.courseName}}
+      </li>
+    {{/each}}
+  {{else}}
+    No courses found.
+  {{/if}}
+</ul>

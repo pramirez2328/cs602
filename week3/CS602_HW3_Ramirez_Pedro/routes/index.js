@@ -13,7 +13,7 @@ router.use(function (req, res, next) {
       lookupByCourseId: [],
       lookupByCourseName: [],
       lookupByCoordinator: [],
-      courseDescrition: []
+      courseDescription: []
     };
   }
   next();
@@ -42,8 +42,6 @@ router.get('/cid', async function (req, res) {
 router.post('/cid', async function (req, res) {
   let id = req.body.id;
   let result = await courseDB.lookupByCourseId(id);
-  console.log('index.js: cid post', result);
-
   if (!req.session.sessionData['lookupByCourseId'].includes(encodeURIComponent(id)))
     req.session.sessionData['lookupByCourseId'].push(encodeURIComponent(id));
 
@@ -52,38 +50,111 @@ router.post('/cid', async function (req, res) {
 
 router.get('/cid/:id', async function (req, res) {
   let id = req.params.id;
-
-  // Fill in the code
   let result = await courseDB.lookupByCourseId(id);
-  res.render('lookupByCourseIdView', { query: id, courses: result });
+
+  if (!req.session.sessionData.lookupByCourseId.includes(encodeURIComponent(id))) {
+    req.session.sessionData.lookupByCourseId.push(encodeURIComponent(id));
+  }
+
+  res.format({
+    'application/json': () => {
+      res.json({ query: id, courses: result });
+    },
+    'text/html': () => {
+      res.render('lookupByCourseIdView', { query: id, courses: result });
+    },
+    default: () => {
+      res.status(406).send('Not Acceptable');
+    }
+  });
 });
 
 router.get('/cname', async function (req, res) {
-  // Fill in the code
+  if (req.query.name) {
+    let name = req.query.name;
+    let result = await courseDB.lookupByCourseName(name);
+
+    if (!req.session.sessionData.lookupByCourseName.includes(encodeURIComponent(name))) {
+      req.session.sessionData.lookupByCourseName.push(encodeURIComponent(name));
+    }
+    res.render('lookupByCourseNameView', { query: name, courses: result });
+  } else {
+    res.render('lookupByCourseNameForm');
+  }
 });
 
 router.post('/cname', async function (req, res) {
-  // Fill in the code
+  let name = req.body.name;
+  let result = await courseDB.lookupByCourseName(name);
+
+  if (!req.session.sessionData.lookupByCourseName.includes(encodeURIComponent(name))) {
+    req.session.sessionData.lookupByCourseName.push(encodeURIComponent(name));
+  }
+
+  res.render('lookupByCourseNameView', { query: name, courses: result });
 });
 
 router.get('/cname/:name', async function (req, res) {
-  // Fill in the code
+  let name = req.params.name;
+  let result = await courseDB.lookupByCourseName(name);
+
+  if (!req.session.sessionData.lookupByCourseName.includes(encodeURIComponent(name))) {
+    req.session.sessionData.lookupByCourseName.push(encodeURIComponent(name));
+  }
+
+  res.format({
+    'application/json': () => {
+      res.json({ query: name, courses: result });
+    },
+    'text/html': () => {
+      res.render('lookupByCourseNameView', { query: name, courses: result });
+    },
+    default: () => {
+      res.status(406).send('Not Acceptable');
+    }
+  });
 });
 
 router.get('/random', async function (req, res) {
-  // Fill in the code
+  let result = await courseDB.getRandomCourse();
+
+  if (!req.session.sessionData.lookupByCourseId.includes(encodeURIComponent(result.courseId))) {
+    req.session.sessionData.lookupByCourseId.push(encodeURIComponent(result.courseId));
+  }
+
+  res.render('randomView', result);
 });
 
 router.get('/describe/:id', async function (req, res) {
-  // Fill in the code
+  let id = req.params.id;
+  let description = await courseDB.getCourseDescription(id);
+
+  if (!req.session.sessionData.courseDescription.includes(encodeURIComponent(id))) {
+    req.session.sessionData.courseDescription.push(encodeURIComponent(id));
+  }
+
+  res.render('courseDescriptionView', { query: id, description });
 });
 
 router.get('/coordinator/:id', async function (req, res) {
-  // Fill in the code
+  let id = req.params.id;
+  let result = await courseDB.lookupByCoordinator(id);
+
+  if (!req.session.sessionData.lookupByCoordinator.includes(encodeURIComponent(id))) {
+    req.session.sessionData.lookupByCoordinator.push(encodeURIComponent(id));
+  }
+
+  res.render('coordinatorView', { query: id, courses: result.Courses });
 });
 
 router.get('/history', function (req, res) {
-  // Fill in the code
+  const result = {
+    lookupByCourseId: req.session.sessionData.lookupByCourseId,
+    lookupByCourseName: req.session.sessionData.lookupByCourseName,
+    lookupByCoordinator: req.session.sessionData.lookupByCoordinator,
+    courseDescription: req.session.sessionData.courseDescription
+  };
+  res.render('sessionView', result);
 });
 
 export { router };

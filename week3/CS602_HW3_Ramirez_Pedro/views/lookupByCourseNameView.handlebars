@@ -1,4 +1,21 @@
-<b>Course Name Query </b>
+<b>Course Id Query: </b>
 {{this.query}}
 <p></p>
+<ul>
 
+  {{#if this.courses}}
+    {{#each this.courses}}
+      <li>
+        <a href=''>{{this.courseId}}</a>
+        -
+        {{this.courseName}}
+        (
+        <a href=''>Contact Prof. {{this.Coordinator.fullName}}</a>
+        )
+      </li>
+    {{/each}}
+  {{else}}
+    No courses found.
+  {{/if}}
+
+</ul>

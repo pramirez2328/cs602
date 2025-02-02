@@ -1,4 +1,55 @@
-<h3>Session history</h3>
+<h3>Session history:</h3>
 
-<hr/>
+<hr />
+<h4>By Course Id's</h4>
+{{#if this.lookupByCourseId}}
+  <ul>
+    {{#each this.lookupByCourseId}}
+      <li>{{this}}</li>
+    {{/each}}
+  </ul>
+{{else}}
+  No Course Id's found.
+{{/if}}
 
+<p></p>
+<hr />
+
+<h4>By Course Name's</h4>
+{{#if this.lookupByCourseName}}
+  <ul>
+    {{#each this.lookupByCourseName}}
+      <li>{{this}}</li>
+    {{/each}}
+  </ul>
+{{else}}
+  No Course Names found.
+{{/if}}
+
+<p></p>
+<hr />
+
+<h4>By Coordinator's</h4>
+{{#if this.lookupByCoordinator}}
+  <ul>
+    {{#each this.lookupByCoordinator}}
+      <li>{{this}}</li>
+    {{/each}}
+  </ul>
+{{else}}
+  No Coordinators found.
+{{/if}}
+
+<p></p>
+<hr />
+
+<h4>By Course Description's</h4>
+{{#if this.courseDescription}}
+  <ul>
+    {{#each this.courseDescription}}
+      <li>{{this}}</li>
+    {{/each}}
+  </ul>
+{{else}}
+  No Course Descriptions found.
+{{/if}}

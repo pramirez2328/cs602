@@ -6,7 +6,12 @@
   {{#if this.courses}}
     {{#each this.courses}}
       <li>
-        </b>{{this.courseId}} - {{this.courseName}}<br>
+        <a href=''>{{this.courseId}}</a>
+        -
+        {{this.courseName}}
+        (
+        <a href=''>Contact Prof. {{this.Coordinator.fullName}}</a>
+        )
       </li>
     {{/each}}
   {{else}}
