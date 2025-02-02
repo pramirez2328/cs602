@@ -1,11 +1,16 @@
 <b>Coordinator Query: </b>
 {{this.query}}
 <p></p>
+<b>Coordinator: {{this.result.fullName}}</b>
+<p></p>
+<p>Contact Email: <a href='mailto:{{this.result.id}}@bu.edu'>{{this.result.id}}@bu.edu</a></p>
+
+<p>Coordinator for the folllowing courses:</p>
 <ul>
-  {{#if this.courses}}
-    {{#each this.courses}}
+  {{#if this.result.Courses}}
+    {{#each this.result.Courses}}
       <li>
-        <a href=''>{{this.courseId}}</a>
+        <a href='/describe/{{this.id}}'>{{this.courseId}}</a>
         -
         {{this.courseName}}
       </li>

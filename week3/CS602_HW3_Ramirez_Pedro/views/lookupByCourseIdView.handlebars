@@ -6,11 +6,11 @@
   {{#if this.courses}}
     {{#each this.courses}}
       <li>
-        <a href=''>{{this.courseId}}</a>
+        <a href='/describe/{{this.id}}'>{{this.courseId}}</a>
         -
         {{this.courseName}}
         (
-        <a href=''>Contact Prof. {{this.Coordinator.fullName}}</a>
+        <a href='/coordinator/{{this.Coordinator.id}}'>Contact Prof. {{this.Coordinator.fullName}}</a>
         )
       </li>
     {{/each}}

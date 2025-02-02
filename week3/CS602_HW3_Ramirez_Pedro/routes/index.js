@@ -42,6 +42,7 @@ router.get('/cid', async function (req, res) {
 router.post('/cid', async function (req, res) {
   let id = req.body.id;
   let result = await courseDB.lookupByCourseId(id);
+
   if (!req.session.sessionData['lookupByCourseId'].includes(encodeURIComponent(id)))
     req.session.sessionData['lookupByCourseId'].push(encodeURIComponent(id));
 
@@ -144,7 +145,7 @@ router.get('/coordinator/:id', async function (req, res) {
     req.session.sessionData.lookupByCoordinator.push(encodeURIComponent(id));
   }
 
-  res.render('coordinatorView', { query: id, courses: result.Courses });
+  res.render('coordinatorView', { query: id, result });
 });
 
 router.get('/history', function (req, res) {
