@@ -1,0 +1,375 @@
+[{
+  "_id": "CS 101",
+  "courseName": "Computers and Their Applications",
+  "coordinator": "epinsky"
+},
+{
+  "_id": "CS 200",
+  "courseName": "Introduction to Computer Information Systems",
+  "coordinator": "epinsky"
+},
+{
+  "_id": "CS 201",
+  "courseName": "Introduction to Programming",
+  "coordinator": "epinsky"
+},
+{
+  "_id": "CS 231",
+  "courseName": "Programming with C++",
+  "coordinator": "epinsky"
+},
+{
+  "_id": "CS 232",
+  "courseName": "Programming with Java",
+  "coordinator": "mzhang2"
+},
+{
+  "_id": "CS 248",
+  "courseName": "Discrete Mathematics",
+  "coordinator": "temkin"
+},
+{
+  "_id": "CS 300",
+  "courseName": "Introduction to Software Development",
+  "coordinator": "epinsky"
+},
+{
+  "_id": "CS 341",
+  "courseName": "Data Structures with C++",
+  "coordinator": "epinsky"
+},
+{
+  "_id": "CS 342",
+  "courseName": "Data Structures with Java",
+  "coordinator": "mzhang2"
+},
+{
+  "_id": "CS 382",
+  "courseName": "Information Systems for Management",
+  "coordinator": "ebraude"
+},
+{
+  "_id": "CS 401",
+  "courseName": "Introduction to Web Application Development",
+  "coordinator": "rezar"
+},
+{
+  "_id": "CS 422",
+  "courseName": "Advanced Programming Concepts",
+  "coordinator": "rezar"
+},
+{
+  "_id": "CS 425",
+  "courseName": "Introduction to Business Data Communications and Networks",
+  "coordinator": "sdarena"
+},
+{
+  "_id": "CS 432",
+  "courseName": "Introduction to IT Project Management",
+  "coordinator": "kanabar"
+},
+{
+  "_id": "CS 469",
+  "courseName": "Introduction to Database Design and Implementation for Business",
+  "coordinator": "jaeylee"
+},
+{
+  "_id": "CS 472",
+  "courseName": "Computer Architecture",
+  "coordinator": "shengzhi"
+},
+{
+  "_id": "CS 473",
+  "courseName": "Introduction to Software Engineering",
+  "coordinator": "ebraude"
+},
+{
+  "_id": "CS 520",
+  "courseName": "Information Structures with Java",
+  "coordinator": "mzhang2"
+},
+{
+  "_id": "CS 521",
+  "courseName": "Information Structures with Python",
+  "coordinator": "epinsky"
+},
+{
+  "_id": "CS 526",
+  "courseName": "Data Structures and Algorithms",
+  "coordinator": "jaeylee"
+},
+{
+  "_id": "CS 532",
+  "courseName": "Computer Graphics",
+  "coordinator": "ebraude"
+},
+{
+  "_id": "CS 535",
+  "courseName": "Computer Networks",
+  "coordinator": "day"
+},
+{
+  "_id": "CS 544",
+  "courseName": "Foundations of Analytics and Data Visualization",
+  "coordinator": "kalathur"
+},
+{
+  "_id": "CS 546",
+  "courseName": "Introduction to Probability and Statistics",
+  "coordinator": "temkin"
+},
+{
+  "_id": "CS 550",
+  "courseName": "Computational Mathematics for Machine Learning",
+  "coordinator": "epinsky"
+},
+{
+  "_id": "CS 555",
+  "courseName": "Foundations of Machine Learning",
+  "coordinator": "alizadeh"
+},
+{
+  "_id": "CS 561",
+  "courseName": "Financial Analytics",
+  "coordinator": "guanglan"
+},
+{
+  "_id": "CS 566",
+  "courseName": "Analysis of Algorithms",
+  "coordinator": "mzhang2"
+},
+{
+  "_id": "CS 570",
+  "courseName": "Biomedical Sciences and Health IT",
+  "coordinator": "guanglan"
+},
+{
+  "_id": "CS 575",
+  "courseName": "Operating Systems",
+  "coordinator": "shengzhi"
+},
+{
+  "_id": "CS 579",
+  "courseName": "Database Management",
+  "coordinator": "jaeylee"
+},
+{
+  "_id": "CS 580",
+  "courseName": "Health Informatics",
+  "coordinator": "guanglan"
+},
+{
+  "_id": "CS 581",
+  "courseName": "Health Information Systems",
+  "coordinator": "guanglan"
+},
+{
+  "_id": "CS 584",
+  "courseName": "Ethical and Legal Issues in Healthcare Informatics",
+  "coordinator": "guanglan"
+},
+{
+  "_id": "CS 599",
+  "courseName": "Biometrics",
+  "coordinator": "danazh"
+},
+{
+  "_id": "CS 601",
+  "courseName": "Web Application Development",
+  "coordinator": "rezar"
+},
+{
+  "_id": "CS 602",
+  "courseName": "Server-Side Web Development",
+  "coordinator": "kalathur"
+},
+{
+  "_id": "CS 622",
+  "courseName": "Advanced Programming Techniques",
+  "coordinator": "rezar"
+},
+{
+  "_id": "CS 625",
+  "courseName": "Business Data Communication and Networks",
+  "coordinator": "sdarena"
+},
+{
+  "_id": "CS 632",
+  "courseName": "Information Technology Project Management",
+  "coordinator": "kanabar"
+},
+{
+  "_id": "CS 633",
+  "courseName": "Software Quality, Testing, and Security Management",
+  "coordinator": "kanabar"
+},
+{
+  "_id": "CS 634",
+  "courseName": "Agile Software Development",
+  "coordinator": "kanabar"
+},
+{
+  "_id": "CS 662",
+  "courseName": "Computer Language Theory",
+  "coordinator": "temkin"
+},
+{
+  "_id": "CS 664",
+  "courseName": "Artificial Intelligence",
+  "coordinator": "ebraude"
+},
+{
+  "_id": "CS 665",
+  "courseName": "Software Design and Patterns",
+  "coordinator": "kalathur"
+},
+{
+  "_id": "CS 669",
+  "courseName": "Database Design and Implementation for Business",
+  "coordinator": "jaeylee"
+},
+{
+  "_id": "CS 673",
+  "courseName": "Software Engineering",
+  "coordinator": "danazh"
+},
+{
+  "_id": "CS 674",
+  "courseName": "Database Security",
+  "coordinator": "shengzhi"
+},
+{
+  "_id": "CS 677",
+  "courseName": "Data Science with Python",
+  "coordinator": "epinsky"
+},
+{
+  "_id": "CS 682",
+  "courseName": "Information Systems Analysis and Design",
+  "coordinator": "ebraude"
+},
+{
+  "_id": "CS 683",
+  "courseName": "Mobile Application Development with Android",
+  "coordinator": "danazh"
+},
+{
+  "_id": "CS 684",
+  "courseName": "Enterprise Cybersecurity Management",
+  "coordinator": "danazh"
+},
+{
+  "_id": "CS 685",
+  "courseName": "Network Design and Management",
+  "coordinator": "sdarena"
+},
+{
+  "_id": "CS 688",
+  "courseName": "Web Mining and Graph Analytics",
+  "coordinator": "rezar"
+},
+{
+  "_id": "CS 689",
+  "courseName": "Designing and Implementing a Data Warehouse",
+  "coordinator": "jaeylee"
+},
+{
+  "_id": "CS 690",
+  "courseName": "Network Security",
+  "coordinator": "sdarena"
+},
+{
+  "_id": "CS 693",
+  "courseName": "Digital Forensics and Investigations",
+  "coordinator": "sdarena"
+},
+{
+  "_id": "CS 694",
+  "courseName": "Mobile Forensics and Security",
+  "coordinator": "danazh"
+},
+{
+  "_id": "CS 695",
+  "courseName": "Cybersecurity",
+  "coordinator": "shengzhi"
+},
+{
+  "_id": "CS 699",
+  "courseName": "Data Mining",
+  "coordinator": "jaeylee"
+},
+{
+  "_id": "CS 701",
+  "courseName": "Rich Internet Application Development",
+  "coordinator": "rezar"
+},
+{
+  "_id": "CS 763",
+  "courseName": "Secure Software Development",
+  "coordinator": "danazh"
+},
+{
+  "_id": "CS 766",
+  "courseName": "Deep Reinforcement Learning",
+  "coordinator": "rezar"
+},
+{
+  "_id": "CS 767",
+  "courseName": "Advanced Machine Learning and Neural Networks",
+  "coordinator": "ebraude"
+},
+{
+  "_id": "CS 775",
+  "courseName": "Advanced Networking",
+  "coordinator": "sdarena"
+},
+{
+  "_id": "CS 777",
+  "courseName": "Big Data Analytics",
+  "coordinator": "alizadeh"
+},
+{
+  "_id": "CS 779",
+  "courseName": "Advanced Database Management",
+  "coordinator": "jaeylee"
+},
+{
+  "_id": "CS 781",
+  "courseName": "Advanced Health Informatics",
+  "coordinator": "guanglan"
+},
+{
+  "_id": "CS 782",
+  "courseName": "IT Strategy and Management",
+  "coordinator": "ebraude"
+},
+{
+  "_id": "CS 783",
+  "courseName": "Enterprise Architecture",
+  "coordinator": "ebraude"
+},
+{
+  "_id": "CS 787",
+  "courseName": "Adversarial Machine Learning",
+  "coordinator": "shengzhi"
+},
+{
+  "_id": "CS 788",
+  "courseName": "Generative AI",
+  "coordinator": "rezar"
+},
+{
+  "_id": "CS 789",
+  "courseName": "Cryptography",
+  "coordinator": "temkin"
+},
+{
+  "_id": "CS 790",
+  "courseName": "Computer Vision in AI",
+  "coordinator": "mzhang2"
+},
+{
+  "_id": "CS 799",
+  "courseName": "Advanced Cryptography",
+  "coordinator": "temkin"
+}]
