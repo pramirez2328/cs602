@@ -19,8 +19,6 @@ router.use(function (req, res, next) {
   next();
 });
 
-// GET request to the homepage
-
 router.get('/', function (req, res) {
   res.render('homeView');
 });
@@ -45,6 +43,7 @@ router.post('/cid', async function (req, res) {
 
   if (!req.session.sessionData['lookupByCourseId'].includes(encodeURIComponent(id)))
     req.session.sessionData['lookupByCourseId'].push(encodeURIComponent(id));
+  console.log(result);
 
   res.render('lookupByCourseIdView', { query: id, courses: result });
 });
@@ -81,10 +80,32 @@ router.get('/cname', async function (req, res) {
 
 router.post('/cname', async function (req, res) {
   // Fill in the code
+  let name = req.body.name;
+  let result = await courseDB.lookupByCourseName(name);
+
+  if (!req.session.sessionData['lookupByCourseName'].includes(encodeURIComponent(name)))
+    req.session.sessionData['lookupByCourseName'].push(encodeURIComponent(name));
+
+  console.log(result);
+  res.render('lookupByCourseNameView', { query: name, courses: result });
 });
 
 router.get('/cname/:name', async function (req, res) {
   // Fill in the code
+  let name = req.params.name;
+  let result = await courseDB.lookupByCourseName(name);
+
+  if (!req.session.sessionData['lookupByCourseName'].includes(encodeURIComponent(name)))
+    req.session.sessionData['lookupByCourseName'].push(encodeURIComponent(name));
+
+  res.format({
+    'application/json': function () {
+      res.json({ query: name, courses: result });
+    },
+    'text/html': function () {
+      res.render('lookupByCourseNameView', { query: name, courses: result });
+    }
+  });
 });
 
 router.get('/coordinator/:id', async function (req, res) {
@@ -95,7 +116,15 @@ router.get('/coordinator/:id', async function (req, res) {
   if (!req.session.sessionData['lookupByCoordinator'].includes(id))
     req.session.sessionData['lookupByCoordinator'].push(id);
 
-  res.render('coordinatorView', { query: id, coordinator: result });
+  console.log(result);
+  res.format({
+    'application/json': function () {
+      res.json(result);
+    },
+    'text/html': function () {
+      res.render('coordinatorView', result);
+    }
+  });
 });
 
 router.get('/random', async function (req, res) {

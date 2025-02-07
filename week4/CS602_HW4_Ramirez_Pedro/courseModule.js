@@ -4,23 +4,11 @@ import { Course, Coordinator } from './models/index.js';
 
 export const connection = await mongoose.connect(dbURL);
 
-// lookupByCourseId, lookupByCourseName
-// o Use find method with RegExp
-// o populate coordinator in the method call.
-// - lookupByCoordinator
-// o Use findById method
-// o populate courses in the method call.
-// - getRandomCourse
-// o code provided
-// - getCourseDescription
-// o code provided
-
 export const lookupByCourseId = async (id) => {
   console.log('\nLookup by CourseId:', id);
   let result = [];
 
   result = await Course.find({ _id: new RegExp(id) }).populate('coordinator');
-  console.log(JSON.stringify(result, null, 2));
 
   return JSON.parse(JSON.stringify(result));
 };
@@ -30,7 +18,6 @@ export const lookupByCourseName = async (name) => {
   let result = [];
 
   result = await Course.find({ courseName: new RegExp(name) }).populate('coordinator');
-  console.log(JSON.stringify(result, null, 2));
 
   return JSON.parse(JSON.stringify(result));
 };
