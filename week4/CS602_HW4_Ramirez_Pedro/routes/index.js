@@ -67,9 +67,7 @@ router.get('/cid/:id', async function (req, res) {
 });
 
 router.get('/cname', async function (req, res) {
-  // Fill in the code
   if (req.query.name) {
-    // Fill in the code
     let name = req.query.name;
     let result = await courseDB.lookupByCourseName(name);
 
@@ -77,7 +75,6 @@ router.get('/cname', async function (req, res) {
       req.session.sessionData['lookupByCourseName'].push(encodeURIComponent(name));
     res.render('lookupByCourseNameView', { query: name, courses: result });
   } else {
-    // Fill in the code
     res.render('lookupByCourseNameForm');
   }
 });
@@ -92,6 +89,13 @@ router.get('/cname/:name', async function (req, res) {
 
 router.get('/coordinator/:id', async function (req, res) {
   // Fill in the code
+  let id = req.params.id;
+  let result = await courseDB.lookupByCoordinator(id);
+
+  if (!req.session.sessionData['lookupByCoordinator'].includes(id))
+    req.session.sessionData['lookupByCoordinator'].push(id);
+
+  res.render('coordinatorView', { query: id, coordinator: result });
 });
 
 router.get('/random', async function (req, res) {

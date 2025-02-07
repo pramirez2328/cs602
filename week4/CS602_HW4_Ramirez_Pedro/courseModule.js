@@ -39,7 +39,8 @@ export const lookupByCoordinator = async (id) => {
   console.log('\nLookup by Coordinator:', id);
   let result = [];
 
-  // Fill in the code
+  result = await Coordinator.findById(id).populate('courses');
+  console.log(JSON.stringify(result, null, 2));
 
   return JSON.parse(JSON.stringify(result));
 };
@@ -52,6 +53,7 @@ export const getRandomCourse = async () => {
     populate: { path: 'courses', select: 'courseName' }
   });
 
+  console.log(JSON.stringify(result[0], null, 2));
   return JSON.parse(JSON.stringify(result[0]));
 };
 
@@ -59,5 +61,7 @@ export const getCourseDescription = async (id) => {
   console.log('\nGet Course Description:', id);
   let response = await fetch('https://kalathur.com/php/getCourseData.php?id=cs' + id);
   let result = await response.json();
+
+  console.log(JSON.stringify(result, null, 2));
   return result;
 };
