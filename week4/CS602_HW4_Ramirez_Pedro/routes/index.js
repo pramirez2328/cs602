@@ -72,6 +72,7 @@ router.get('/cname', async function (req, res) {
 
     if (!req.session.sessionData['lookupByCourseName'].includes(encodeURIComponent(name)))
       req.session.sessionData['lookupByCourseName'].push(encodeURIComponent(name));
+
     res.render('lookupByCourseNameView', { query: name, courses: result });
   } else {
     res.render('lookupByCourseNameForm');
@@ -79,19 +80,16 @@ router.get('/cname', async function (req, res) {
 });
 
 router.post('/cname', async function (req, res) {
-  // Fill in the code
   let name = req.body.name;
   let result = await courseDB.lookupByCourseName(name);
 
   if (!req.session.sessionData['lookupByCourseName'].includes(encodeURIComponent(name)))
     req.session.sessionData['lookupByCourseName'].push(encodeURIComponent(name));
 
-  console.log(result);
   res.render('lookupByCourseNameView', { query: name, courses: result });
 });
 
 router.get('/cname/:name', async function (req, res) {
-  // Fill in the code
   let name = req.params.name;
   let result = await courseDB.lookupByCourseName(name);
 
@@ -109,7 +107,6 @@ router.get('/cname/:name', async function (req, res) {
 });
 
 router.get('/coordinator/:id', async function (req, res) {
-  // Fill in the code
   let id = req.params.id;
   let result = await courseDB.lookupByCoordinator(id);
 

@@ -17,7 +17,7 @@ export const lookupByCourseName = async (name) => {
   console.log('\nLookup by CourseName:', name);
   let result = [];
 
-  result = await Course.find({ courseName: new RegExp(name) }).populate('coordinator');
+  result = await Course.find({ courseName: new RegExp(name, 'i') }).populate('coordinator');
 
   return JSON.parse(JSON.stringify(result));
 };
@@ -40,7 +40,6 @@ export const getRandomCourse = async () => {
     populate: { path: 'courses', select: 'courseName' }
   });
 
-  console.log(JSON.stringify(result[0], null, 2));
   return JSON.parse(JSON.stringify(result[0]));
 };
 
@@ -49,6 +48,5 @@ export const getCourseDescription = async (id) => {
   let response = await fetch('https://kalathur.com/php/getCourseData.php?id=cs' + id);
   let result = await response.json();
 
-  console.log(JSON.stringify(result, null, 2));
   return result;
 };
