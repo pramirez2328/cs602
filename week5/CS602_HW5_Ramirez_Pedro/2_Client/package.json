@@ -1,0 +1,16 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "main": "ex01_graphQL_client.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "type": "module",
+  "dependencies": {
+    "@apollo/client": "^3.11.8"
+  }
+}

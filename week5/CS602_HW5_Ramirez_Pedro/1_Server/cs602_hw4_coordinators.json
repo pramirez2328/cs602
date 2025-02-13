@@ -1,0 +1,173 @@
+[{
+  "_id": "alizadeh",
+  "firstName": "Farshid",
+  "lastName": "Alizadeh-Shabdiz",
+  "courses": [
+    "CS 555",
+    "CS 777"
+  ]
+},
+{
+  "_id": "sdarena",
+  "firstName": "Scot",
+  "lastName": "Arena",
+  "courses": [
+    "CS 425",
+    "CS 625",
+    "CS 685",
+    "CS 690",
+    "CS 693",
+    "CS 775"
+  ]
+},
+{
+  "_id": "ebraude",
+  "firstName": "Eric",
+  "lastName": "Braude",
+  "courses": [
+    "CS 382",
+    "CS 473",
+    "CS 532",
+    "CS 664",
+    "CS 682",
+    "CS 767",
+    "CS 782",
+    "CS 783"
+  ]
+},
+{
+  "_id": "day",
+  "firstName": "John",
+  "lastName": "Day",
+  "courses": [
+    "CS 535"
+  ]
+},
+{
+  "_id": "kalathur",
+  "firstName": "Suresh",
+  "lastName": "Kalathur",
+  "courses": [
+    "CS 544",
+    "CS 602",
+    "CS 665"
+  ]
+},
+{
+  "_id": "kanabar",
+  "firstName": "Vijay",
+  "lastName": "Kanabar",
+  "courses": [
+    "CS 432",
+    "CS 632",
+    "CS 633",
+    "CS 634"
+  ]
+},
+{
+  "_id": "epinsky",
+  "firstName": "Eugene",
+  "lastName": "Pinsky",
+  "courses": [
+    "CS 101",
+    "CS 200",
+    "CS 201",
+    "CS 231",
+    "CS 300",
+    "CS 341",
+    "CS 521",
+    "CS 550",
+    "CS 677"
+  ]
+},
+{
+  "_id": "rezar",
+  "firstName": "Reza",
+  "lastName": "Rawassizadeh",
+  "courses": [
+    "CS 401",
+    "CS 422",
+    "CS 601",
+    "CS 622",
+    "CS 688",
+    "CS 701",
+    "CS 766",
+    "CS 788"
+  ]
+},
+{
+  "_id": "temkin",
+  "firstName": "Anatoly",
+  "lastName": "Temkin",
+  "courses": [
+    "CS 248",
+    "CS 546",
+    "CS 662",
+    "CS 789",
+    "CS 799"
+  ]
+},
+{
+  "_id": "jaeylee",
+  "firstName": "Jae",
+  "lastName": "Young Lee",
+  "courses": [
+    "CS 469",
+    "CS 526",
+    "CS 579",
+    "CS 669",
+    "CS 689",
+    "CS 699",
+    "CS 779"
+  ]
+},
+{
+  "_id": "guanglan",
+  "firstName": "Guanglan",
+  "lastName": "Zhang",
+  "courses": [
+    "CS 561",
+    "CS 570",
+    "CS 580",
+    "CS 581",
+    "CS 584",
+    "CS 781"
+  ]
+},
+{
+  "_id": "mzhang2",
+  "firstName": "Ming",
+  "lastName": "Zhang",
+  "courses": [
+    "CS 232",
+    "CS 342",
+    "CS 520",
+    "CS 566",
+    "CS 790"
+  ]
+},
+{
+  "_id": "shengzhi",
+  "firstName": "Shengzhi",
+  "lastName": "Zhang",
+  "courses": [
+    "CS 472",
+    "CS 575",
+    "CS 674",
+    "CS 695",
+    "CS 787"
+  ]
+},
+{
+  "_id": "danazh",
+  "firstName": "Yuting",
+  "lastName": "Zhang",
+  "courses": [
+    "CS 599",
+    "CS 673",
+    "CS 683",
+    "CS 684",
+    "CS 694",
+    "CS 763"
+  ]
+}]
