@@ -67,24 +67,23 @@ export default function Courses({ courseList, refreshById, refreshByName, descri
         </div>
       </div>
       <h3>Course Lookup Results</h3>
-      <div>
-        {courseList.map((course) => (
-          <div key={course.id} style={{ border: 'solid 1px rgb(223, 221, 221)', padding: '10px' }}>
-            <b>
-              <a href='dummy' onClick={(e) => handleCourseClick(e, course._id)}>
-                {course._id}
-              </a>{' '}
-              - {course.courseName}
-              <br />
-              (Contact:
-              <a href='dummy' onClick={(e) => handleCoordinatorClick(e, course.coordinator._id)}>
-                {course.coordinator.firstName} {course.coordinator.lastName}
-              </a>
-              )
-            </b>
-          </div>
-        ))}
-      </div>
+
+      {courseList.map((course) => (
+        <div key={course.id} style={{ border: 'solid 1px rgb(223, 221, 221)', padding: '10px' }}>
+          <b>
+            <a href='dummy' onClick={(e) => handleCourseClick(e, course._id)}>
+              {course._id}
+            </a>{' '}
+            - {course.courseName}
+            <br />
+            (Contact:
+            <a href='dummy' onClick={(e) => handleCoordinatorClick(e, course.coordinator._id)}>
+              {course.coordinator.firstName} {course.coordinator.lastName}
+            </a>
+            )
+          </b>
+        </div>
+      ))}
     </div>
   );
 }
