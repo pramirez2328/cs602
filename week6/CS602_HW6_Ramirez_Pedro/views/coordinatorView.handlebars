@@ -1,0 +1,21 @@
+<b>Coordinator Query: </b>
+{{this._id}}
+<p></p>
+<b>Coordinator: {{this.firstName}} {{this.lastName}}</b>
+<p></p>
+<p>Contact Email: <a href='mailto:{{this._id}}@bu.edu'>{{this._id}}@bu.edu</a></p>
+
+<p>Coordinator for the folllowing courses:</p>
+<ul>
+  {{#if this.courses}}
+    {{#each this.courses}}
+      <li>
+        <a href='/describe/{{this._id}}'>{{this._id}}</a>
+        -
+        {{this.courseName}}
+      </li>
+    {{/each}}
+  {{else}}
+    No courses found.
+  {{/if}}
+</ul>
