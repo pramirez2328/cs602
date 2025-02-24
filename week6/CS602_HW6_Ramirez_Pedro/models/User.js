@@ -16,7 +16,7 @@ const User = mongoose.model('User', userSchema);
  * @returns {Promise<Object|null>} user object or null if not found
  */
 export async function getUserByUsername(username) {
-  return await User.findOne({ username });
+  return await User.findOne({ username: { $regex: new RegExp(`^${username}$`, 'i') } });
 }
 
 /**

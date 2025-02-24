@@ -6,12 +6,20 @@ import bcrypt from 'bcryptjs';
 import cookieParser from 'cookie-parser';
 import expressSession from 'express-session';
 import Handlebars from 'handlebars';
+import mongoose from 'mongoose';
+import { dbURL } from './credentials.js';
 
-// Import user model (to be created later)
+// Import user model
 import { getUserByUsername } from './models/User.js';
 
 // Initialize Express
 const app = express();
+
+// ✅ Connect to MongoDB and Verify Connection
+mongoose
+  .connect(dbURL)
+  .then(() => console.log(`✅ Connected to MongoDB: ${dbURL}`))
+  .catch((err) => console.error('❌ MongoDB Connection Error:', err));
 
 // Setup Handlebars view engine
 app.engine(
@@ -44,9 +52,8 @@ app.use(cookieParser());
 app.use(
   expressSession({
     secret: 'cs602-secret',
-    resave: false, // 🔹 Prevent unnecessary resaving
-    saveUninitialized: true,
-    cookie: { secure: false, httpOnly: true, sameSite: 'lax' } // ✅ Allow cookies in local development
+    resave: false,
+    saveUninitialized: false
   })
 );
 
@@ -54,29 +61,36 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Passport Local Strategy for Authentication
+// ✅ Passport Local Strategy for Authentication
 passport.use(
   new LocalStrategy(async (username, password, done) => {
-    const user = await getUserByUsername(username); // ✅ Fix: Added `await`
-    if (!user) {
-      console.log('❌ User not found:', username);
-      return done(null, false, { message: 'Incorrect username.' });
+    try {
+      console.log(`🔍 Attempting login for: ${username}`);
+      const user = await getUserByUsername(username);
+
+      if (!user) {
+        console.log('❌ User not found:', username);
+        return done(null, false, { message: 'Incorrect username.' });
+      }
+
+      if (!user.password) {
+        console.log('❌ User password is missing:', user);
+        return done(null, false, { message: 'User data is corrupted' });
+      }
+
+      const isMatch = await bcrypt.compare(password, user.password);
+
+      if (!isMatch) {
+        console.log('❌ Incorrect password for:', username);
+        return done(null, false, { message: 'Incorrect password' });
+      }
+
+      console.log('✅ Login successful:', username);
+      return done(null, user);
+    } catch (error) {
+      console.error('❌ Error during authentication:', error);
+      return done(error);
     }
-
-    if (!user.password) {
-      console.log('❌ User password is missing:', user);
-      return done(null, false, { message: 'User data is corrupted' });
-    }
-
-    const isMatch = await bcrypt.compare(password, user.password);
-
-    if (!isMatch) {
-      console.log('❌ Incorrect password for:', username);
-      return done(null, false, { message: 'Incorrect password' });
-    }
-
-    console.log('✅ Login successful:', username);
-    return done(null, user);
   })
 );
 
@@ -88,10 +102,23 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser(async (username, done) => {
   try {
     const user = await getUserByUsername(username);
+    if (!user) {
+      console.log('❌ User not found during deserialization:', username);
+      return done(new Error('User not found'));
+    }
     done(null, user);
   } catch (error) {
+    console.error('❌ Error during deserialization:', error);
     done(error);
   }
+});
+
+// Debugging: Log Session & User Info
+app.use((req, res, next) => {
+  console.log('🔍 Current session:', req.session);
+  console.log('🔍 Current user:', req.user);
+  res.locals.user = req.user;
+  next();
 });
 
 // Routes
@@ -104,18 +131,7 @@ app.use((req, res) => {
   res.render('404');
 });
 
-app.use((req, res, next) => {
-  console.log('🔍 Current session:', req.session);
-  console.log('🔍 Current user:', req.user);
-  next();
-});
-
-app.use((req, res, next) => {
-  res.set('Cache-Control', 'no-store, no-cache, must-revalidate, private');
-  next();
-});
-
 // Start server
 app.listen(3000, function () {
-  console.log('http://localhost:3000');
+  console.log('🚀 Server running at http://localhost:3000');
 });
