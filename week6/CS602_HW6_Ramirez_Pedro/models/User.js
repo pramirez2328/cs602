@@ -10,7 +10,6 @@ const userSchema = new mongoose.Schema({
 
 // Create User model
 const User = mongoose.model('User', userSchema);
-
 /**
  * Get user by username
  * @param {string} username

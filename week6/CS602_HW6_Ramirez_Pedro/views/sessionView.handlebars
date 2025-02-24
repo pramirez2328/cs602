@@ -1,7 +1,7 @@
-<h3>Session history:</h3>
+<h3>Session History:</h3>
 
 <hr />
-<h4>By Course Id's</h4>
+<h4>By Course Ids</h4>
 {{#if this.lookupByCourseId}}
   <ul>
     {{#each this.lookupByCourseId}}
@@ -9,13 +9,13 @@
     {{/each}}
   </ul>
 {{else}}
-  No Course Id's found.
+  No Course Ids found.
 {{/if}}
 
 <p></p>
 <hr />
 
-<h4>By Course Name's</h4>
+<h4>By Course Names</h4>
 {{#if this.lookupByCourseName}}
   <ul>
     {{#each this.lookupByCourseName}}
@@ -29,7 +29,7 @@
 <p></p>
 <hr />
 
-<h4>By Coordinator's</h4>
+<h4>By Coordinators</h4>
 {{#if this.lookupByCoordinator}}
   <ul>
     {{#each this.lookupByCoordinator}}
@@ -43,10 +43,10 @@
 <p></p>
 <hr />
 
-<h4>By Course Description's</h4>
-{{#if this.courseDescrition}}
+<h4>By Course Descriptions</h4>
+{{#if this.courseDescription}}
   <ul>
-    {{#each this.courseDescrition}}
+    {{#each this.courseDescription}}
       <li>{{this}}</li>
     {{/each}}
   </ul>

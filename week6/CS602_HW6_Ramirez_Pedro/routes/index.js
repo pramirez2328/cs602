@@ -1,35 +1,90 @@
 import express from 'express';
+import passport from 'passport';
+import * as courseDB from '../courseModule.js';
 
 const router = express.Router();
 
-// Use the course module
-import * as courseDB from '../courseModule.js';
+// Middleware to check if user is authenticated
+function isAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/login');
+}
 
-// router specs
+// Middleware to check if user is an admin
+function isAdmin(req, res, next) {
+  if (req.isAuthenticated() && req.user.role === 'admin') {
+    return next();
+  }
+  res.status(403).send('Access denied. Admins only.');
+}
 
-router.use(function (req, res, next) {
-  if (req.session.sessionData === undefined) {
+// Session data initialization middleware
+router.use((req, res, next) => {
+  if (!req.session.sessionData) {
     req.session.sessionData = {
       lookupByCourseId: [],
       lookupByCourseName: [],
       lookupByCoordinator: [],
-      courseDescrition: []
+      courseDescription: []
     };
   }
   next();
 });
 
-router.get('/', function (req, res) {
-  res.render('homeView');
+// Home Route
+router.get('/', (req, res) => {
+  res.render('homeView', { user: req.user });
 });
 
-router.get('/cid', async function (req, res) {
+// Login Route
+router.get('/login', (req, res) => {
+  res.render('loginView');
+});
+
+router.post('/login', (req, res, next) => {
+  passport.authenticate('local', (err, user, info) => {
+    if (err) return next(err);
+    if (!user) {
+      console.log('❌ Login failed:', info.message);
+      return res.redirect('/login');
+    }
+
+    req.logIn(user, (err) => {
+      if (err) return next(err);
+      console.log('✅ Login successful:', req.user);
+      console.log('🔍 Session after login:', req.session);
+
+      req.session.save((err) => {
+        // ✅ Forces session to be stored before redirecting
+        if (err) return next(err);
+        console.log('✅ Session saved!');
+        res.redirect('/');
+      });
+    });
+  })(req, res, next); // ✅ Pass `req, res, next` explicitly
+});
+
+// Logout Route
+router.get('/logout', (req, res) => {
+  req.logout((err) => {
+    if (err) return next(err);
+    res.redirect('/');
+  });
+});
+
+// Protected Routes (Authenticated Users Only)
+router.use(isAuthenticated);
+
+// Course Lookup by ID (Admins Only)
+router.get('/cid', isAdmin, async (req, res) => {
   if (req.query.id) {
     let id = req.query.id;
     let result = await courseDB.lookupByCourseId(id);
 
-    if (!req.session.sessionData['lookupByCourseId'].includes(encodeURIComponent(id)))
-      req.session.sessionData['lookupByCourseId'].push(encodeURIComponent(id));
+    if (!req.session.sessionData.lookupByCourseId.includes(encodeURIComponent(id)))
+      req.session.sessionData.lookupByCourseId.push(encodeURIComponent(id));
 
     res.render('lookupByCourseIdView', { query: id, courses: result });
   } else {
@@ -37,41 +92,37 @@ router.get('/cid', async function (req, res) {
   }
 });
 
-router.post('/cid', async function (req, res) {
+router.post('/cid', isAdmin, async (req, res) => {
   let id = req.body.id;
   let result = await courseDB.lookupByCourseId(id);
 
-  if (!req.session.sessionData['lookupByCourseId'].includes(encodeURIComponent(id)))
-    req.session.sessionData['lookupByCourseId'].push(encodeURIComponent(id));
-  console.log(result);
+  if (!req.session.sessionData.lookupByCourseId.includes(encodeURIComponent(id)))
+    req.session.sessionData.lookupByCourseId.push(encodeURIComponent(id));
 
   res.render('lookupByCourseIdView', { query: id, courses: result });
 });
 
-router.get('/cid/:id', async function (req, res) {
+router.get('/cid/:id', isAdmin, async (req, res) => {
   let id = req.params.id;
   let result = await courseDB.lookupByCourseId(id);
 
-  if (!req.session.sessionData['lookupByCourseId'].includes(encodeURIComponent(id)))
-    req.session.sessionData['lookupByCourseId'].push(encodeURIComponent(id));
+  if (!req.session.sessionData.lookupByCourseId.includes(encodeURIComponent(id)))
+    req.session.sessionData.lookupByCourseId.push(encodeURIComponent(id));
 
   res.format({
-    'application/json': function () {
-      res.json({ query: id, courses: result });
-    },
-    'text/html': function () {
-      res.render('lookupByCourseIdView', { query: id, courses: result });
-    }
+    'application/json': () => res.json({ query: id, courses: result }),
+    'text/html': () => res.render('lookupByCourseIdView', { query: id, courses: result })
   });
 });
 
-router.get('/cname', async function (req, res) {
+// Course Lookup by Name (Admins Only)
+router.get('/cname', isAdmin, async (req, res) => {
   if (req.query.name) {
     let name = req.query.name;
     let result = await courseDB.lookupByCourseName(name);
 
-    if (!req.session.sessionData['lookupByCourseName'].includes(encodeURIComponent(name)))
-      req.session.sessionData['lookupByCourseName'].push(encodeURIComponent(name));
+    if (!req.session.sessionData.lookupByCourseName.includes(encodeURIComponent(name)))
+      req.session.sessionData.lookupByCourseName.push(encodeURIComponent(name));
 
     res.render('lookupByCourseNameView', { query: name, courses: result });
   } else {
@@ -79,94 +130,66 @@ router.get('/cname', async function (req, res) {
   }
 });
 
-router.post('/cname', async function (req, res) {
+router.post('/cname', isAdmin, async (req, res) => {
   let name = req.body.name;
   let result = await courseDB.lookupByCourseName(name);
 
-  if (!req.session.sessionData['lookupByCourseName'].includes(encodeURIComponent(name)))
-    req.session.sessionData['lookupByCourseName'].push(encodeURIComponent(name));
+  if (!req.session.sessionData.lookupByCourseName.includes(encodeURIComponent(name)))
+    req.session.sessionData.lookupByCourseName.push(encodeURIComponent(name));
 
   res.render('lookupByCourseNameView', { query: name, courses: result });
 });
 
-router.get('/cname/:name', async function (req, res) {
-  let name = req.params.name;
-  let result = await courseDB.lookupByCourseName(name);
-
-  if (!req.session.sessionData['lookupByCourseName'].includes(encodeURIComponent(name)))
-    req.session.sessionData['lookupByCourseName'].push(encodeURIComponent(name));
-
-  res.format({
-    'application/json': function () {
-      res.json({ query: name, courses: result });
-    },
-    'text/html': function () {
-      res.render('lookupByCourseNameView', { query: name, courses: result });
-    }
-  });
-});
-
-router.get('/coordinator/:id', async function (req, res) {
+// Lookup by Coordinator (Admins Only)
+router.get('/coordinator/:id', isAdmin, async (req, res) => {
   let id = req.params.id;
   let result = await courseDB.lookupByCoordinator(id);
 
-  if (!req.session.sessionData['lookupByCoordinator'].includes(id))
-    req.session.sessionData['lookupByCoordinator'].push(id);
+  if (!req.session.sessionData.lookupByCoordinator.includes(id)) req.session.sessionData.lookupByCoordinator.push(id);
 
-  console.log(result);
   res.format({
-    'application/json': function () {
-      res.json(result);
-    },
-    'text/html': function () {
-      res.render('coordinatorView', result);
-    }
+    'application/json': () => res.json(result),
+    'text/html': () => res.render('coordinatorView', result)
   });
 });
 
-router.get('/random', async function (req, res) {
+// Random Course (Available to all authenticated users)
+router.get('/random', async (req, res) => {
   const result = await courseDB.getRandomCourse();
 
   res.format({
-    'application/json': function () {
-      res.json(result);
-    },
-    'text/html': function () {
-      res.render('randomView', result);
-    }
+    'application/json': () => res.json(result),
+    'text/html': () => res.render('randomView', result)
   });
 });
 
-router.get('/describe/:id', async function (req, res) {
+// Course Description (Available to all authenticated users)
+router.get('/describe/:id', async (req, res) => {
   let id = req.params.id;
   if (id.startsWith('CS ')) id = id.substring(3);
 
   let result = await courseDB.getCourseDescription(id);
 
-  if (!req.session.sessionData['courseDescrition'].includes(id)) req.session.sessionData['courseDescrition'].push(id);
+  if (!req.session.sessionData.courseDescription.includes(id)) req.session.sessionData.courseDescription.push(id);
 
   res.format({
-    'application/json': function () {
-      res.json({ query: id, description: result });
-    },
-    'text/html': function () {
-      res.render('courseDescriptionView', { query: id, description: result });
-    }
+    'application/json': () => res.json({ query: id, description: result }),
+    'text/html': () => res.render('courseDescriptionView', { query: id, description: result })
   });
 });
 
-router.get('/history', function (req, res) {
+// User Session History (Available to all authenticated users)
+router.get('/history', (req, res) => {
   let sessionData = req.session.sessionData;
 
-  let courseIdData = sessionData['lookupByCourseId'].map((e) => ({ name: e, displayName: decodeURIComponent(e) }));
-
-  let courseNameData = sessionData['lookupByCourseName'].map((e) => ({ name: e, displayName: decodeURIComponent(e) }));
+  let courseIdData = sessionData.lookupByCourseId.map((e) => ({ name: e, displayName: decodeURIComponent(e) }));
+  let courseNameData = sessionData.lookupByCourseName.map((e) => ({ name: e, displayName: decodeURIComponent(e) }));
 
   res.render('sessionView', {
     lookupByCourseId: courseIdData,
     lookupByCourseName: courseNameData,
-    lookupByCoordinator: sessionData['lookupByCoordinator'],
-    courseDescrition: sessionData['courseDescrition']
+    lookupByCoordinator: sessionData.lookupByCoordinator,
+    courseDescription: sessionData.courseDescription
   });
 });
 

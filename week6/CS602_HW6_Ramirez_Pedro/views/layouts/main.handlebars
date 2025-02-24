@@ -1,19 +1,29 @@
 <html>
   <head>
-    <title>CS602 HW4</title>
+    <title>CS602 HW6 - Pedro Ramirez</title>
   </head>
   <body>
     <header>
       <img src='/images/bu-logo.gif' alt='logo' />
     </header>
-    <h3>CS602 HW4 - Pedro Ramirez</h3>
-    <a href='/cid'>Lookup By CourseId</a>
-    |
-    <a href='/cname'>Lookup By CourseName</a>
-    |
-    <a href='/random'>Get Random Course</a>
-    |
-    <a href='/history'>History</a>
+    <h3>CS602 HW6 - Pedro Ramirez</h3>
+
+    {{#if user}}
+      <p>Logged in as <strong>{{user.username}}</strong> (Role: {{user.role}})</p>
+
+      {{#if (eq user.role 'admin')}}
+        <a href='/cid'>Lookup By CourseId</a>
+        |
+        <a href='/cname'>Lookup By CourseName</a>
+        |
+      {{/if}}
+
+      <a href='/random'>Get Random Course</a>
+      |
+      <a href='/history'>History</a>
+      |
+      <a href='/logout'>Logout</a>
+    {{/if}}
 
     <hr />
 
