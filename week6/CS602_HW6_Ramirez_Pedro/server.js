@@ -53,7 +53,8 @@ app.use(
   expressSession({
     secret: 'cs602-secret',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: { secure: false }
   })
 );
 
