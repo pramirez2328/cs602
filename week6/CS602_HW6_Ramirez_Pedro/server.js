@@ -12,7 +12,6 @@ import { dbURL } from './credentials.js';
 // Import user model
 import { getUserByUsername } from './models/User.js';
 
-// Initialize Express
 const app = express();
 
 // ✅ Connect to MongoDB and Verify Connection
@@ -21,7 +20,6 @@ mongoose
   .then(() => console.log(`✅ Connected to MongoDB: ${dbURL}`))
   .catch((err) => console.error('❌ MongoDB Connection Error:', err));
 
-// Setup Handlebars view engine
 app.engine(
   'handlebars',
   engine({
@@ -40,14 +38,11 @@ Handlebars.registerHelper('eq', function (a, b) {
 app.set('view engine', 'handlebars');
 app.set('views', './views');
 
-// Static resources
 app.use(express.static('./public'));
 
-// Parse request body
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// Cookie and session handling
 app.use(cookieParser());
 app.use(
   expressSession({
@@ -122,17 +117,14 @@ app.use((req, res, next) => {
   next();
 });
 
-// Routes
 import { router as routes } from './routes/index.js';
 app.use('/', routes);
 
-// 404 Error Handling
 app.use((req, res) => {
   res.status(404);
   res.render('404');
 });
 
-// Start server
 app.listen(3000, function () {
   console.log('🚀 Server running at http://localhost:3000');
 });

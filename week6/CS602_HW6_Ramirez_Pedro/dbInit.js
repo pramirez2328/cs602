@@ -39,7 +39,7 @@ async function initializeDatabase() {
 
     // 🔹 Insert Users
     const usersCollection = db.collection('users');
-    await usersCollection.deleteMany({}); // Reset users
+    await usersCollection.deleteMany({});
 
     const adminPassword = await bcrypt.hash('admin123', 10);
     const userPassword = await bcrypt.hash('user123', 10);

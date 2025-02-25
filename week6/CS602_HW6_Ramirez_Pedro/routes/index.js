@@ -57,13 +57,12 @@ router.post('/login', (req, res, next) => {
       console.log('🔍 Session after login:', req.session);
 
       req.session.save((err) => {
-        // ✅ Forces session to be stored before redirecting
         if (err) return next(err);
         console.log('✅ Session saved!');
         res.redirect('/');
       });
     });
-  })(req, res, next); // ✅ Pass `req, res, next` explicitly
+  })(req, res, next);
 });
 
 // Logout Route

@@ -32,5 +32,4 @@ export async function createUser(username, password, role = 'user') {
   return await newUser.save();
 }
 
-// Export the User model
 export { User };
